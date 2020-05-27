@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Игорь Левин](https://up.htmlacademy.ru/javascript/20/user/1237137).
-* Наставник: `Неизвестно`.
+* Наставник: [Денис Евстратчик](https://htmlacademy.ru/profile/denmetall).
 
 ---
 
