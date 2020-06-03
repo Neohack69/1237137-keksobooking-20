@@ -14,7 +14,7 @@ var photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.g
 
 for (var i = 1; i <= 8; i++) {
   var arr = featuresType.slice(getRandomInt(0, 6), 6);
-  var arr2 = photos.slice(getRandomInt(0, 3), 3)
+  var arr2 = photos.slice(getRandomInt(0, 3), 3);
   var newAdvertisement = {
     'author': {
       'avatar': 'img/avatars/user' + i + '.png',
@@ -36,9 +36,10 @@ for (var i = 1; i <= 8; i++) {
       'x': getRandomInt(0, 600),
       'y': getRandomInt(130, 630)
     }
-  }
+  };
   arr = null;
 }
 
-var mapActive = document.querySelectorAll('.map');
-mapActive.
+var mapActive = document.querySelector('.map');
+mapActive.classList.remove('map--faded');
+
