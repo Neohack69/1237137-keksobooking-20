@@ -34,8 +34,6 @@ var photos = [
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
 ];
 
-const QUANTITY_OF_ADVERTISEMENT = 8;
-
 function getMockData(QUANTITY_OF_ADVERTISEMENT) {
   var advertisementMockArray = [];
   for (var i = 1; i < QUANTITY_OF_ADVERTISEMENT+1; i++) {
@@ -73,7 +71,7 @@ function getMockData(QUANTITY_OF_ADVERTISEMENT) {
   return advertisementMockArray;
 }
 
-var mockData = getMockData();
+var mockData = getMockData(8);
 
 var map = document.querySelector('.map--faded');
 map.classList.remove('map--faded');
