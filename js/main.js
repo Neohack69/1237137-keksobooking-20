@@ -34,9 +34,9 @@ var photos = [
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
 ];
 
-function getMockData(QUANTITY_OF_ADVERTISEMENT) {
+function getMockData(quantity) {
   var advertisementMockArray = [];
-  for (var i = 1; i < QUANTITY_OF_ADVERTISEMENT + 1; i++) {
+  for (var i = 1; i < quantity + 1; i++) {
     var arr = featuresType.slice(getRandomInt(0, 6), 6);
     var arr2 = photos.slice(getRandomInt(0, 3), 3);
     var x = getRandomInt(0, 600);
@@ -71,7 +71,9 @@ function getMockData(QUANTITY_OF_ADVERTISEMENT) {
   return advertisementMockArray;
 }
 
-var mockData = getMockData(8);
+var QUANTITY_OF_ADVERTISEMENT = 8;
+
+var mockData = getMockData(QUANTITY_OF_ADVERTISEMENT);
 
 var map = document.querySelector('.map--faded');
 map.classList.remove('map--faded');
@@ -80,7 +82,7 @@ var mapPin = document.querySelector('.map__pins');
 var template = document.querySelector('#pin').content.querySelector('button');
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < QUANTITY_OF_ADVERTISEMENT; i++) {
+for (var i = 0; i < 8; i++) {
   var element = template.cloneNode(true);
   element.style.left = mockData[i].location.x + 20 + 'px';
   element.style.top = mockData[i].location.y + 40 + 'px';
