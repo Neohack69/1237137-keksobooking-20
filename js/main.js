@@ -36,7 +36,7 @@ var photos = [
 
 function getMockData(QUANTITY_OF_ADVERTISEMENT) {
   var advertisementMockArray = [];
-  for (var i = 1; i < QUANTITY_OF_ADVERTISEMENT+1; i++) {
+  for (var i = 1; i < QUANTITY_OF_ADVERTISEMENT + 1; i++) {
     var arr = featuresType.slice(getRandomInt(0, 6), 6);
     var arr2 = photos.slice(getRandomInt(0, 3), 3);
     var x = getRandomInt(0, 600);
@@ -86,7 +86,6 @@ for (var i = 0; i < QUANTITY_OF_ADVERTISEMENT; i++) {
   element.style.top = mockData[i].location.y + 40 + 'px';
   element.querySelector('img').src = mockData[i].author.avatar;
   element.querySelector('img').alt = mockData[i].offer.title;
-  element
   fragment.appendChild(element);
 }
 
