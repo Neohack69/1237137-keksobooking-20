@@ -1,7 +1,7 @@
 'use strict';
 
 var QUANTITY_OF_ADVERTISEMENT = 8;
-var CARD_NUMBER = 0;
+var CARD_NUMBER = 1;
 
 var FLAT_TYPE = [
   'palace',
@@ -55,8 +55,8 @@ function getMockData(quantity) {
         'type': FLAT_TYPE[getRandomInt(1, 5)],
         'rooms': getRandomInt(1, 6),
         'guests': getRandomInt(1, 11),
-        'checkin': CHECKIN_TIME[getRandomInt(1, 4)],
-        'checkout': CHECKOUT_TIME[getRandomInt(1, 4)],
+        'checkin': CHECKIN_TIME[getRandomInt(1, 3)],
+        'checkout': CHECKOUT_TIME[getRandomInt(1, 3)],
         'features': arr,
         'description': 'Описание ' + i,
         'photos': arr2,
@@ -103,41 +103,54 @@ function fillCard(cardNumber) {
   elementCard.querySelector('.popup__text--address').textContent = card.offer.address;
   elementCard.querySelector('.popup__text--price').textContent = card.offer.price + '₽/ночь';
   switch (card.offer.type) {
-    case 'flat': elementCard.querySelector('.popup__type').textContent = 'Квартира'; break;
-    case 'bungalo': elementCard.querySelector('.popup__type').textContent = 'Бунгало'; break;
-    case 'house': elementCard.querySelector('.popup__type').textContent = 'Дом'; break;
-    case 'palace': elementCard.querySelector('.popup__type').textContent = 'Дворец'; break;
+    case 'flat':
+      elementCard.querySelector('.popup__type').textContent = 'Квартира';
+      break;
+    case 'bungalo':
+      elementCard.querySelector('.popup__type').textContent = 'Бунгало';
+      break;
+    case 'house':
+      elementCard.querySelector('.popup__type').textContent = 'Дом';
+      break;
+    case 'palace':
+      elementCard.querySelector('.popup__type').textContent = 'Дворец';
+      break;
   }
-  elementCard.querySelector('.popup__text--capacity').textContent = card.offer.rooms + ' комнаты для ' + card.offer.guests + ' гостей';
-  elementCard.querySelector('.popup__text--time').textContent = 'Заезд после ' + card.offer.checkin + ', выезд до ' + card.offer.checkout;
+  elementCard.querySelector('.popup__text--capacity')
+    .textContent = card.offer.rooms + ' комнаты для ' + card.offer.guests + ' гостей';
+  elementCard.querySelector('.popup__text--time')
+    .textContent = 'Заезд после ' + card.offer.checkin + ', выезд до ' + card.offer.checkout;
 
   var arr = [];
 
-  for (var j = 0; j < FEATURES_TYPE.length; j++) {
-    if (card.offer.features.indexOf(FEATURES_TYPE[j]) === -1) {
-      arr.push(FEATURES_TYPE[j]);
+  for (i = 0; i < FEATURES_TYPE.length; i++) {
+    if (card.offer.features.indexOf(FEATURES_TYPE[i]) === -1) {
+      arr.push(FEATURES_TYPE[i]);
     }
   }
 
-  for (var g = 0; g < arr.length; g++) {
-    elementCard.querySelector('.popup__feature--' + arr[g]).remove();
+  for (i = 0; i < arr.length; i++) {
+    elementCard.querySelector('.popup__feature--' + arr[i]).remove();
   }
 
-  for (var a = 0; a < card.offer.photos.length; a++) {
-    elementCard.querySelector('.popup__photo').src = card.offer.photos[a];
-    elementCard.querySelector('.popup__photos').appendChild(element.querySelector('.popup__photo'));
-  } /*  Тут сомневаюсь  */
+  for (i = 0; i < card.offer.photos.length; i++) {
+    var img = document.createElement('img', 'popup__photo');
+    img.src = card.offer.photos[i];
+    img.width = 45;
+    img.height = 40;
+    img.alt = 'Фотография жилья';
+    elementCard.querySelector('.popup__photos').appendChild(img);
+  }
 
   elementCard.querySelector('.popup__description').textContent = card.offer.description;
   elementCard.querySelector('.popup__avatar').src = card.author.avatar;
 
   fragmentCard.appendChild(elementCard);
+
+  var mapCard = document.querySelector('.map');
+  var mapCard2 = document.querySelector('.map__filters-container');
+  mapCard.insertBefore(fragmentCard, mapCard2);
 }
-
-/* Тут надо добавить вставку "Вставьте полученный DOM-элемент в блок .map перед блоком .map__filters-container."
-Но я не понял все именно туда вставить.
- */
-
 
 fillCard(CARD_NUMBER);
 
