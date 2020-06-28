@@ -1,7 +1,7 @@
 'use strict';
 
 var QUANTITY_OF_ADVERTISEMENT = 8;
-var CARD_NUMBER = 1;
+var CARD_NUMBER = 4;
 
 var FLAT_TYPE = [
   'palace',
@@ -95,7 +95,6 @@ for (var i = 0; i < 8; i++) {
 mapPin.appendChild(fragment);
 
 function fillCard(cardNumber) {
-  var fragmentCard = document.createDocumentFragment();
   var templateCard = document.querySelector('#card').content.querySelector('article');
   var elementCard = templateCard.cloneNode(true);
   var card = mockData[cardNumber];
@@ -145,13 +144,17 @@ function fillCard(cardNumber) {
   elementCard.querySelector('.popup__description').textContent = card.offer.description;
   elementCard.querySelector('.popup__avatar').src = card.author.avatar;
 
-  fragmentCard.appendChild(elementCard);
+  return (elementCard);
+}
 
+function renderCards(fragmentCard) {
   var mapCard = document.querySelector('.map');
   var mapCard2 = document.querySelector('.map__filters-container');
   mapCard.insertBefore(fragmentCard, mapCard2);
 }
 
+
+renderCards(fillCard(CARD_NUMBER));
 fillCard(CARD_NUMBER);
 
 function getRandomInt(min, max) {
