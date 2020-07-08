@@ -1,7 +1,6 @@
 'use strict';
 
 var QUANTITY_OF_ADVERTISEMENT = 8;
-var CARD_NUMBER = 4;
 
 var FLAT_TYPE = [
   'palace',
@@ -188,9 +187,11 @@ activatePin.addEventListener('mousedown', function (evt) {
     fieldType.addEventListener('change', checkfieldPrice);
     fieldNumberRooms.addEventListener('change', checkNumberRooms);
     fieldNumberCapacity.addEventListener('change', checkNumberRooms);
-    getAllCards();
+
+    addHandlersForPins();
   }
 });
+
 activatePin.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
     activateForms();
@@ -275,14 +276,32 @@ var checkTimeOut = function () {
 checkTimeIn();
 checkTimeOut();
 
-function getAllCards() {
-  var pinPopup = document.querySelectorAll('.map__pin:not(.map__pin--main)');
-  console.log(pinPopup);
-  for (i = 0; i < pinPopup.length; i++) {
-    pinPopup[i].addEventListener('click', renderCards(fillCard(1)));
-  }
-}
 
+var addHandlersForPins = function () {
+  var buttonPin = document.querySelectorAll('.map__pin:not(.map__pin--main)');
+
+  for (var g = 0; g < buttonPin.length; g++) {
+    buttonPin[g].id = g;
+    buttonPin[g].addEventListener('click', pinClickHandler);
+  }
+};
+
+var pinClickHandler = function (evt) {
+  var currentCard = document.querySelector('.map__card');
+  if (currentCard) {
+    currentCard.remove();
+  }
+  var currentPin = parseInt(evt.currentTarget.id, 10);
+  renderCards(fillCard(currentPin));
+
+  var popup = document.querySelector('.popup');
+  var popupClose = popup.querySelector('.popup__close');
+  var popupCloseClickHandler = function () {
+    popup.remove();
+    popupClose.removeEventListener('click', popupCloseClickHandler);
+  };
+  popupClose.addEventListener('click', popupCloseClickHandler);
+};
 
 fieldTimeIn.addEventListener('change', checkTimeIn);
 fieldTimeOut.addEventListener('change', checkTimeOut);
