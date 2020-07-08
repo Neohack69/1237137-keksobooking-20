@@ -188,6 +188,7 @@ activatePin.addEventListener('mousedown', function (evt) {
     fieldType.addEventListener('change', checkfieldPrice);
     fieldNumberRooms.addEventListener('change', checkNumberRooms);
     fieldNumberCapacity.addEventListener('change', checkNumberRooms);
+    getAllCards();
   }
 });
 activatePin.addEventListener('keydown', function (evt) {
@@ -273,6 +274,15 @@ var checkTimeOut = function () {
 
 checkTimeIn();
 checkTimeOut();
+
+function getAllCards() {
+  var pinPopup = document.querySelectorAll('.map__pin:not(.map__pin--main)');
+  console.log(pinPopup);
+  for (i = 0; i < pinPopup.length; i++) {
+    pinPopup[i].addEventListener('click', renderCards(fillCard(1)));
+  }
+}
+
 
 fieldTimeIn.addEventListener('change', checkTimeIn);
 fieldTimeOut.addEventListener('change', checkTimeOut);
