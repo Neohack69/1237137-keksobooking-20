@@ -301,14 +301,14 @@ var pinClickHandler = function (evt) {
     popupClose.removeEventListener('click', popupCloseClickHandler);
   };
   popupClose.addEventListener('click', popupCloseClickHandler);
+  popupClose.addEventListener('keydown', function (evt2) {
+    evt2.preventDefault();
+    if (evt2.key === 'Escape') {
+      popupCloseClickHandler();
+      /* Не получается закрыть попап по Esc */
+    }
+  });
 };
-
-document.addEventListener('keydown', function (evt) {
-  evt.preventDefault();
-  if (evt.key === 'Escape') {
-    pinClickHandler();
-  }
-});
 
 fieldTimeIn.addEventListener('change', checkTimeIn);
 fieldTimeOut.addEventListener('change', checkTimeOut);
