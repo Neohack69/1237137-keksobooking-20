@@ -303,6 +303,13 @@ var pinClickHandler = function (evt) {
   popupClose.addEventListener('click', popupCloseClickHandler);
 };
 
+document.addEventListener('keydown', function (evt) {
+  evt.preventDefault();
+  if (evt.key === 'Escape') {
+    pinClickHandler();
+  }
+});
+
 fieldTimeIn.addEventListener('change', checkTimeIn);
 fieldTimeOut.addEventListener('change', checkTimeOut);
 
