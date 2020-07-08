@@ -37,7 +37,7 @@ var PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
 ];
 
-function getMockData (quantity) {
+function getMockData(quantity) {
   var advertisementMockArray = [];
   for (var i = 1; i < quantity + 1; i++) {
     var arr = FEATURES_TYPE.slice(getRandomInt(0, 6), 6);
@@ -88,16 +88,16 @@ for (var i = 0; i < 8; i++) {
   fragment.appendChild(element);
 }
 
-function fillCard (cardNumber) {
+function fillCard(cardNumber) {
   var templateCard = document.querySelector('#card').content
     .querySelector('article');
   var elementCard = templateCard.cloneNode(true);
   var card = mockData[cardNumber];
   elementCard.querySelector('.popup__title').textContent = card.offer.title;
   elementCard.querySelector(
-    '.popup__text--address').textContent = card.offer.address;
+      '.popup__text--address').textContent = card.offer.address;
   elementCard.querySelector(
-    '.popup__text--price').textContent = card.offer.price + '₽/ночь';
+      '.popup__text--price').textContent = card.offer.price + '₽/ночь';
   switch (card.offer.type) {
     case 'flat':
       elementCard.querySelector('.popup__type').textContent = 'Квартира';
@@ -113,7 +113,7 @@ function fillCard (cardNumber) {
       break;
   }
   elementCard.querySelector(
-    '.popup__text--capacity').textContent = card.offer.rooms + ' комнаты для ' +
+      '.popup__text--capacity').textContent = card.offer.rooms + ' комнаты для ' +
     card.offer.guests + ' гостей';
   elementCard.querySelector('.popup__text--time').textContent = 'Заезд после ' +
     card.offer.checkin + ', выезд до ' + card.offer.checkout;
@@ -140,19 +140,19 @@ function fillCard (cardNumber) {
   }
 
   elementCard.querySelector(
-    '.popup__description').textContent = card.offer.description;
+      '.popup__description').textContent = card.offer.description;
   elementCard.querySelector('.popup__avatar').src = card.author.avatar;
 
   return elementCard;
 }
 
-function renderCards (fragmentCard) {
+function renderCards(fragmentCard) {
   var mapCard = document.querySelector('.map');
   var mapCard2 = document.querySelector('.map__filters-container');
   mapCard.insertBefore(fragmentCard, mapCard2);
 }
 
-function disableForms (state) {
+function disableForms(state) {
   var formFieldset1 = document.querySelector('.ad-form-header');
   formFieldset1.disabled = state;
   var formFieldset2 = document.querySelectorAll('.ad-form__element');
@@ -171,13 +171,13 @@ function disableForms (state) {
   }
 }
 
-function activateForms () {
+function activateForms() {
   disableForms(false);
   var address = document.querySelector('#address');
   var top = parseInt(activatePin.style.top, 10) + 54;
   address.setAttribute(
-    'value',
-    top + ', ' + parseInt(activatePin.style.left, 10));
+      'value',
+      top + ', ' + parseInt(activatePin.style.left, 10));
 }
 
 var activatePin = document.querySelector('.map__pin--main');
@@ -185,6 +185,9 @@ activatePin.addEventListener('mousedown', function (evt) {
   if (evt.button === 0) {
     activateForms();
     mapPin.appendChild(fragment);
+    fieldType.addEventListener('change', checkfieldPrice);
+    fieldNumberRooms.addEventListener('change', checkNumberRooms);
+    fieldNumberCapacity.addEventListener('change', checkNumberRooms);
   }
 });
 activatePin.addEventListener('keydown', function (evt) {
@@ -233,16 +236,16 @@ var fieldNumberCapacity = document.querySelector('#capacity');
 var checkNumberRooms = function () {
   if (fieldNumberRooms.value === '1' && fieldNumberCapacity.value !== '1') {
     fieldNumberCapacity.setCustomValidity(
-      'В одной комнате может разместиться только один гость');
+        'В одной комнате может разместиться только один гость');
   } else if (fieldNumberRooms.value === '2' &&
     (fieldNumberCapacity.value !== '1' && fieldNumberCapacity.value !== '2')) {
     fieldNumberCapacity.setCustomValidity(
-      'В двух комнатах могут разместиться от одного до двух человеек');
+        'В двух комнатах могут разместиться от одного до двух человек');
   } else if (fieldNumberRooms.value === '3' &&
     (fieldNumberCapacity.value !== '1' && fieldNumberCapacity.value !== '2' &&
       fieldNumberCapacity.value !== '3')) {
     fieldNumberCapacity.setCustomValidity(
-      'В трех комнатах могут разместиться от одного до трех человек');
+        'В трех комнатах могут разместиться от одного до трех человек');
   } else if (fieldNumberRooms.value === '100' && fieldNumberCapacity.value !==
     '0') {
     fieldNumberCapacity.setCustomValidity('100 комнат не для гостей');
@@ -252,9 +255,31 @@ var checkNumberRooms = function () {
 };
 
 checkNumberRooms();
+
+var fieldTimeIn = document.querySelector('#timein');
+var fieldTimeOut = document.querySelector('#timeout');
+
+var checkTimeIn = function () {
+  if (fieldTimeIn.value !== fieldTimeOut.value) {
+    fieldTimeOut.value = fieldTimeIn.value;
+  }
+};
+
+var checkTimeOut = function () {
+  if (fieldTimeOut.value !== fieldTimeIn.value) {
+    fieldTimeIn.value = fieldTimeOut.value;
+  }
+};
+
+checkTimeIn();
+checkTimeOut();
+
+fieldTimeIn.addEventListener('change', checkTimeIn);
+fieldTimeOut.addEventListener('change', checkTimeOut);
+
 disableForms(true);
 
-function getRandomInt (min, max) {
+function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
