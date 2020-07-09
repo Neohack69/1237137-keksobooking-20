@@ -299,15 +299,17 @@ var pinClickHandler = function (evt) {
   var popupCloseClickHandler = function () {
     popup.remove();
     popupClose.removeEventListener('click', popupCloseClickHandler);
+    document.removeEventListener('keydown', popupCloseKeydownHandler);
   };
   popupClose.addEventListener('click', popupCloseClickHandler);
-  popupClose.addEventListener('keydown', function (evt2) {
-    evt2.preventDefault();
-    if (evt2.key === 'Escape') {
-      popupCloseClickHandler();
-      /* Не получается закрыть попап по Esc */
-    }
-  });
+  document.addEventListener('keydown', popupCloseKeydownHandler);
+};
+
+var popupCloseKeydownHandler = function (evt) {
+  evt.preventDefault();
+  if (evt.key === 'Escape') {
+    pinClickHandler(evt);
+  }
 };
 
 fieldTimeIn.addEventListener('change', checkTimeIn);
