@@ -294,6 +294,12 @@ var pinClickHandler = function (evt) {
   var currentPin = parseInt(evt.currentTarget.id, 10);
   renderCards(fillCard(currentPin));
 
+  var popupCloseKeydownHandler = function (evt2) {
+    evt2.preventDefault();
+    if (evt2.key === 'Escape') {
+      popupCloseClickHandler(evt2);
+    }
+  };
   var popup = document.querySelector('.popup');
   var popupClose = popup.querySelector('.popup__close');
   var popupCloseClickHandler = function () {
@@ -303,13 +309,6 @@ var pinClickHandler = function (evt) {
   };
   popupClose.addEventListener('click', popupCloseClickHandler);
   document.addEventListener('keydown', popupCloseKeydownHandler);
-};
-
-var popupCloseKeydownHandler = function (evt) {
-  evt.preventDefault();
-  if (evt.key === 'Escape') {
-    pinClickHandler(evt);
-  }
 };
 
 fieldTimeIn.addEventListener('change', checkTimeIn);
