@@ -36,6 +36,8 @@
     'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
     'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
   ];
+  var PIN_MAX_Y = 625;
+  var PIN_MAX_X = 1165;
 
   var fieldType = document.querySelector('#type');
   var fieldTypeSelect = document.querySelector('#type option').value;
@@ -54,5 +56,7 @@
     fieldPrice: fieldPrice,
     fieldNumberRooms: fieldNumberRooms,
     fieldNumberCapacity: fieldNumberCapacity,
+    pinMaxY: PIN_MAX_Y,
+    pinMaxX: PIN_MAX_X
   };
 })();

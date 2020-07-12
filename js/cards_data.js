@@ -12,7 +12,7 @@
     for (var i = 1; i < quantity + 1; i++) {
       var arr = window.vars.featuresType.slice(getRandomInt(0, 6), 6);
       var arr2 = window.vars.photos.slice(getRandomInt(0, 3), 3);
-      var x = getRandomInt(0, 600);
+      var x = getRandomInt(0, 1100);
       var y = getRandomInt(130, 630);
       var newAdvertisement = {
         'author': {
