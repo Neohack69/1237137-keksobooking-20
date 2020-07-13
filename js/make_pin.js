@@ -7,9 +7,6 @@
     if (evt.button === 0) {
       window.map.activateForms();
       mapPin.appendChild(window.makeCard.fragment);
-      // fieldType.addEventListener('change', window.form.checkfieldPrice());
-      // fieldNumberRooms.addEventListener('change', window.form.checkNumberRooms());
-      // fieldNumberCapacity.addEventListener('change',window.form.checkNumberRooms());
       window.form.checkNumberRooms();
       window.form.checkfieldPrice();
       addHandlersForPins();
@@ -29,6 +26,10 @@
   activatePin.addEventListener('keydown', function (evt) {
     if (evt.key === 'Enter') {
       window.map.activateForms();
+      mapPin.appendChild(window.makeCard.fragment);
+      window.form.checkNumberRooms();
+      window.form.checkfieldPrice();
+      addHandlersForPins();
     }
   });
   window.makePin = activatePin;
