@@ -22,14 +22,14 @@
   //   '14:00'
   // ];
   //
-  // var FEATURES_TYPE = [
-  //   'wifi',
-  //   'dishwasher',
-  //   'parking',
-  //   'washer',
-  //   'elevator',
-  //   'conditioner'
-  // ];
+  var FEATURES_TYPE = [
+    'wifi',
+    'dishwasher',
+    'parking',
+    'washer',
+    'elevator',
+    'conditioner'
+  ];
   //
   // var PHOTOS = [
   //   'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
@@ -46,7 +46,7 @@
   var fieldNumberCapacity = document.querySelector('#capacity');
   window.vars = {
     // photos: PHOTOS,
-    // featuresType: FEATURES_TYPE,
+    featuresType: FEATURES_TYPE,
     // checkOutTime: CHECKOUT_TIME,
     // checkInTime: CHECKIN_TIME,
     // flatType: FLAT_TYPE,

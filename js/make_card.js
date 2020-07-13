@@ -68,21 +68,24 @@
   }
 
   var template = document.querySelector('#pin').content.querySelector('button');
-  console.log(window.cardsData.length);
   var fragment = document.createDocumentFragment();
-  for (var i = 0; i < window.cardsData.length; i++) {
-    var element = template.cloneNode(true);
-    element.style.left = window.cardsData[i].location.x + 20 + 'px';
-    element.style.top = window.cardsData[i].location.y + 40 + 'px';
-    element.querySelector('img').src = window.cardsData[i].author.avatar;
-    element.querySelector('img').alt = window.cardsData[i].offer.title;
-    fragment.appendChild(element);
+  function createPins() {
+    for (var i = 0; i < window.cardsData.length; i++) {
+      var element = template.cloneNode(true);
+      element.style.left = window.cardsData[i].location.x + 20 + 'px';
+      element.style.top = window.cardsData[i].location.y + 40 + 'px';
+      element.querySelector('img').src = window.cardsData[i].author.avatar;
+      element.querySelector('img').alt = window.cardsData[i].offer.title;
+      fragment.appendChild(element);
+    }
   }
+
 
   window.makeCard = {
     render: function (cardNumber) {
       renderCards(fillCard(cardNumber));
     },
-    fragment: fragment
+    fragment: fragment,
+    createPins: createPins
   };
 })();
