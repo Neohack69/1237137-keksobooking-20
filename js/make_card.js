@@ -35,7 +35,7 @@
 
     var arr = [];
 
-    for (var i = 0; i < window.vars.featuresType.length; i++) {
+    for (var i = 0; i < 6; i++) {
       if (card.offer.features.indexOf(window.vars.featuresType[i]) === -1) {
         arr.push(window.vars.featuresType[i]);
       }
@@ -68,9 +68,9 @@
   }
 
   var template = document.querySelector('#pin').content.querySelector('button');
-
+  console.log(window.cardsData.length);
   var fragment = document.createDocumentFragment();
-  for (var i = 0; i < 8; i++) {
+  for (var i = 0; i < window.cardsData.length; i++) {
     var element = template.cloneNode(true);
     element.style.left = window.cardsData[i].location.x + 20 + 'px';
     element.style.top = window.cardsData[i].location.y + 40 + 'px';
