@@ -6,7 +6,6 @@
   activatePin.addEventListener('mousedown', function (evt) {
     if (evt.button === 0) {
       window.map.activateForms();
-      window.makeCard.createPins();
       mapPin.appendChild(window.makeCard.fragment);
       window.form.checkNumberRooms();
       window.form.checkfieldPrice();
