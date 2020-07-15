@@ -69,6 +69,8 @@
 
   var template = document.querySelector('#pin').content.querySelector('button');
   var fragment = document.createDocumentFragment();
+
+  var mapPin = document.querySelector('.map__pins');
   function createPins() {
     for (var i = 0; i < window.cardsData.length; i++) {
       var element = template.cloneNode(true);
@@ -78,14 +80,13 @@
       element.querySelector('img').alt = window.cardsData[i].offer.title;
       fragment.appendChild(element);
     }
+    mapPin.appendChild(fragment);
   }
-
 
   window.makeCard = {
     render: function (cardNumber) {
       renderCards(fillCard(cardNumber));
     },
-    fragment: fragment,
     createPins: createPins
   };
 })();

@@ -12,17 +12,6 @@
     formFieldset3.disabled = state;
 
     if (!state) {
-      var onError = function (message) {
-        alert.error(message);
-      };
-
-      var onSuccess = function (data) {
-        window.cardsData = data;
-        window.makeCard.createPins();
-      };
-
-      window.load(
-        'https://javascript.pages.academy/keksobooking/data', onSuccess, onError);
       var map = document.querySelector('.map--faded');
       if (map) {
         map.classList.remove('map--faded');
@@ -39,8 +28,8 @@
     var address = document.querySelector('#address');
     var top = parseInt(window.makePin.style.top, 10) + 54;
     address.setAttribute(
-      'value',
-      top + ', ' + parseInt(window.makePin.style.left, 10));
+        'value',
+        top + ', ' + parseInt(window.makePin.style.left, 10));
   }
 
   var pinClickHandler = function (evt) {
@@ -72,8 +61,8 @@
     var top = parseInt(window.makePin.style.top, 10) + 54;
     var left = parseInt(window.makePin.style.left, 10) + 31;
     address.setAttribute(
-      'value',
-      top + ', ' + left);
+        'value',
+        top + ', ' + left);
   };
 
   disableForms(true);
