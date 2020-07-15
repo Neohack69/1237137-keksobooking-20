@@ -1,5 +1,5 @@
 'use strict';
-
+// для коммита
 (function () {
   function fillCard(cardNumber) {
     var templateCard = document.querySelector('#card').content

@@ -1,5 +1,5 @@
 'use strict';
-
+// для коммита
 (function () {
   var onError = function (message) {
     alert.error(message);

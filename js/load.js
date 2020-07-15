@@ -1,5 +1,5 @@
 'use strict';
-
+// для коммита
 (function () {
   window.load = function (url, onSuccess, onError) {
     var xhr = new XMLHttpRequest();

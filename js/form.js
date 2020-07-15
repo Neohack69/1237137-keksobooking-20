@@ -1,5 +1,5 @@
 'use strict';
-
+// для коммита
 (function () {
   var checkfieldPrice = function (evt) {
     var value;

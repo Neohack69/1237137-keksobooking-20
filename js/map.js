@@ -1,5 +1,5 @@
 'use strict';
-
+// для коммита
 (function () {
   function disableForms(state) {
     var formFieldset1 = document.querySelector('.ad-form-header');
