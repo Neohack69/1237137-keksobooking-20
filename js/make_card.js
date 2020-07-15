@@ -1,5 +1,5 @@
 'use strict';
-
+// для коммита
 (function () {
   function fillCard(cardNumber) {
     var templateCard = document.querySelector('#card').content
@@ -35,7 +35,7 @@
 
     var arr = [];
 
-    for (var i = 0; i < window.vars.featuresType.length; i++) {
+    for (var i = 0; i < 6; i++) {
       if (card.offer.features.indexOf(window.vars.featuresType[i]) === -1) {
         arr.push(window.vars.featuresType[i]);
       }
@@ -68,21 +68,25 @@
   }
 
   var template = document.querySelector('#pin').content.querySelector('button');
-
   var fragment = document.createDocumentFragment();
-  for (var i = 0; i < 8; i++) {
-    var element = template.cloneNode(true);
-    element.style.left = window.cardsData[i].location.x + 20 + 'px';
-    element.style.top = window.cardsData[i].location.y + 40 + 'px';
-    element.querySelector('img').src = window.cardsData[i].author.avatar;
-    element.querySelector('img').alt = window.cardsData[i].offer.title;
-    fragment.appendChild(element);
+
+  var mapPin = document.querySelector('.map__pins');
+  function createPins() {
+    for (var i = 0; i < window.cardsData.length; i++) {
+      var element = template.cloneNode(true);
+      element.style.left = window.cardsData[i].location.x + 20 + 'px';
+      element.style.top = window.cardsData[i].location.y + 40 + 'px';
+      element.querySelector('img').src = window.cardsData[i].author.avatar;
+      element.querySelector('img').alt = window.cardsData[i].offer.title;
+      fragment.appendChild(element);
+    }
+    mapPin.appendChild(fragment);
   }
 
   window.makeCard = {
     render: function (cardNumber) {
       renderCards(fillCard(cardNumber));
     },
-    fragment: fragment
+    createPins: createPins
   };
 })();
