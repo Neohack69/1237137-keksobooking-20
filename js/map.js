@@ -1,5 +1,5 @@
 'use strict';
-// для коммита
+
 (function () {
   function disableForms(state) {
     var formFieldset1 = document.querySelector('.ad-form-header');
@@ -28,8 +28,8 @@
     var address = document.querySelector('#address');
     var top = parseInt(window.makePin.style.top, 10) + 54;
     address.setAttribute(
-        'value',
-        top + ', ' + parseInt(window.makePin.style.left, 10));
+      'value',
+      top + ', ' + parseInt(window.makePin.style.left, 10));
   }
 
   var pinClickHandler = function (evt) {
@@ -61,8 +61,8 @@
     var top = parseInt(window.makePin.style.top, 10) + 54;
     var left = parseInt(window.makePin.style.left, 10) + 31;
     address.setAttribute(
-        'value',
-        top + ', ' + left);
+      'value',
+      top + ', ' + left);
   };
 
   disableForms(true);

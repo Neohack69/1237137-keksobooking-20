@@ -1,5 +1,5 @@
 'use strict';
-// для коммита
+
 (function () {
   var checkfieldPrice = function (evt) {
     var value;
@@ -29,8 +29,6 @@
     }
   };
 
-  checkfieldPrice();
-
   var checkNumberRooms = function () {
     if (window.vars.fieldNumberRooms.value === '1' &&
       window.vars.fieldNumberCapacity.value !== '1') {
@@ -58,8 +56,6 @@
     }
   };
 
-  checkNumberRooms();
-
   var fieldTimeIn = document.querySelector('#timein');
   var fieldTimeOut = document.querySelector('#timeout');
 
@@ -81,12 +77,8 @@
   fieldTimeIn.addEventListener('change', checkTimeIn);
   fieldTimeOut.addEventListener('change', checkTimeOut);
 
-  window.vars.fieldType.addEventListener('change', checkfieldPrice());
-  window.vars.fieldNumberRooms.addEventListener('change', checkNumberRooms());
+  window.vars.fieldType.addEventListener('change', checkfieldPrice);
+  window.vars.fieldNumberRooms.addEventListener('change', checkNumberRooms);
   window.vars.fieldNumberCapacity.addEventListener(
-      'change', checkNumberRooms());
-  window.form = {
-    checkfieldPrice: checkfieldPrice,
-    checkNumberRooms: checkNumberRooms,
-  };
+    'change', checkNumberRooms);
 })();

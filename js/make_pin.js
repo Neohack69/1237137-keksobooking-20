@@ -1,5 +1,5 @@
 'use strict';
-// для коммита
+
 (function () {
   var onError = function (message) {
     alert.error(message);
@@ -19,20 +19,19 @@
     activatePin.removeEventListener('click', renderPins);
     if (!window.cardsData.length) {
       window.load(
-          'https://javascript.pages.academy/keksobooking/data', onSuccess, onError);
+        'https://javascript.pages.academy/keksobooking/data', onSuccess,
+        onError);
     }
     if (window.cardsData.length && !window.isRendered) {
       window.makeCard.createPins();
       addHandlersForPins();
       window.isRendered = true;
     }
-  };
+  }
 
   activatePin.addEventListener('mousedown', function (evt) {
     if (evt.button === 0) {
       window.map.activateForms();
-      window.form.checkNumberRooms();
-      window.form.checkfieldPrice();
     }
   });
   activatePin.addEventListener('click', renderPins);
@@ -51,8 +50,6 @@
   activatePin.addEventListener('keydown', function (evt) {
     if (evt.key === 'Enter') {
       window.map.activateForms();
-      window.form.checkNumberRooms();
-      window.form.checkfieldPrice();
     }
   });
   window.makePin = activatePin;

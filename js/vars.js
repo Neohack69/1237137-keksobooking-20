@@ -1,5 +1,5 @@
 'use strict';
-// для коммита
+
 (function () {
   var FEATURES_TYPE = [
     'wifi',
