@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  function disableForms(state) {
+  var disableForms = function (state) {
     var formFieldset1 = document.querySelector('.ad-form-header');
     formFieldset1.disabled = state;
     var formFieldset2 = document.querySelectorAll('.ad-form__element');
@@ -10,18 +10,25 @@
     }
     var formFieldset3 = document.querySelector('.map__filters');
     formFieldset3.disabled = state;
-
+    var mapFaded = document.querySelector('.map--faded');
+    var formEnabled = document.querySelector('.ad-form--disabled');
     if (!state) {
-      var map = document.querySelector('.map--faded');
-      if (map) {
-        map.classList.remove('map--faded');
+      if (mapFaded) {
+        mapFaded.classList.remove('map--faded');
       }
-      var formEnabled = document.querySelector('.ad-form--disabled');
       if (formEnabled) {
         formEnabled.classList.remove('ad-form--disabled');
       }
+    } else {
+      document.querySelector('.map').classList.add('map--faded');
+      document.querySelector('.ad-form').classList.add('ad-form--disabled');
+      var buttonPin = document.querySelectorAll(
+        '.map__pin:not(.map__pin--main)');
+      for (var g = 0; g < buttonPin.length; g++) {
+        buttonPin[g].remove();
+      }
     }
-  }
+  };
 
   function activateForms() {
     disableForms(false);
@@ -70,5 +77,6 @@
     pinPickHandler: pinClickHandler,
     activateForms: activateForms,
     setAddress: setAddress,
+    disableForms: disableForms,
   };
 })();
