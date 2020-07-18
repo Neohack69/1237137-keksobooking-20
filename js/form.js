@@ -34,25 +34,30 @@
       window.vars.fieldNumberCapacity.value !== '1') {
       window.vars.fieldNumberCapacity.setCustomValidity(
           'В одной комнате может разместиться только один гость');
+      window.vars.fieldNumberCapacity.reportValidity();
     } else if (window.vars.fieldNumberRooms.value === '2' &&
       (window.vars.fieldNumberCapacity.value !== '1' &&
         window.vars.fieldNumberCapacity.value !==
         '2')) {
       window.vars.fieldNumberCapacity.setCustomValidity(
           'В двух комнатах могут разместиться от одного до двух человек');
+      window.vars.fieldNumberCapacity.reportValidity();
     } else if (window.vars.fieldNumberRooms.value === '3' &&
       (window.vars.fieldNumberCapacity.value !== '1' &&
         window.vars.fieldNumberCapacity.value !== '2' &&
         window.vars.fieldNumberCapacity.value !== '3')) {
       window.vars.fieldNumberCapacity.setCustomValidity(
           'В трех комнатах могут разместиться от одного до трех человек');
+      window.vars.fieldNumberCapacity.reportValidity();
     } else if (window.vars.fieldNumberRooms.value === '100' &&
       window.vars.fieldNumberCapacity.value !==
       '0') {
       window.vars.fieldNumberCapacity.setCustomValidity(
           '100 комнат не для гостей');
+      window.vars.fieldNumberCapacity.reportValidity();
     } else {
       window.vars.fieldNumberCapacity.setCustomValidity('');
+      window.vars.fieldNumberCapacity.reportValidity();
     }
   };
 
