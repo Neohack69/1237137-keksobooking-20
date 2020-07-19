@@ -23,7 +23,7 @@
       document.querySelector('.map').classList.add('map--faded');
       document.querySelector('.ad-form').classList.add('ad-form--disabled');
       var buttonPin = document.querySelectorAll(
-        '.map__pin:not(.map__pin--main)');
+          '.map__pin:not(.map__pin--main)');
       for (var g = 0; g < buttonPin.length; g++) {
         buttonPin[g].remove();
       }
@@ -35,8 +35,8 @@
     var address = document.querySelector('#address');
     var top = parseInt(window.makePin.style.top, 10) + 54;
     address.setAttribute(
-      'value',
-      top + ', ' + parseInt(window.makePin.style.left, 10));
+        'value',
+        top + ', ' + parseInt(window.makePin.style.left, 10));
   }
 
   var pinClickHandler = function (evt) {
@@ -68,8 +68,8 @@
     var top = parseInt(window.makePin.style.top, 10) + 54;
     var left = parseInt(window.makePin.style.left, 10) + 31;
     address.setAttribute(
-      'value',
-      top + ', ' + left);
+        'value',
+        top + ', ' + left);
   };
 
   disableForms(true);

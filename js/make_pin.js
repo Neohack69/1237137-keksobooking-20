@@ -19,15 +19,15 @@
     activatePin.removeEventListener('click', renderPins);
     if (!window.cardsData.length) {
       window.load(
-        'https://javascript.pages.academy/keksobooking/data', onSuccess,
-        onError);
+          'https://javascript.pages.academy/keksobooking/data', onSuccess,
+          onError);
     }
     if (window.cardsData.length && !window.isRendered) {
       window.makeCard.createPins();
       addHandlersForPins();
       window.isRendered = true;
     }
-  }
+  };
 
   activatePin.addEventListener('mousedown', function (evt) {
     if (evt.button === 0) {

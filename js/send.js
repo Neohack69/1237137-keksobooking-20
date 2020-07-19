@@ -28,7 +28,7 @@
     var closeButton = document.querySelector('.success');
     closeButton.addEventListener('click', closeModalClick);
     document.addEventListener('keydown', closeSuccessKeydown);
-    function closeSuccessKeydown(evt){
+    function closeSuccessKeydown(evt) {
       if (evt.key === 'Escape') {
         var errorNode = document.querySelector('.map');
         errorNode.removeChild(fragment);
@@ -46,7 +46,7 @@
   function resetPage() {
     window.map.disableForms(true);
     window.isRendered = false;
-    window.makePin.addEventListener('click', renderPins);
+    window.makePin.addEventListener('click', window.renderPins);
     window.vars.fieldPrice.value = '';
     document.querySelector('#title').value = '';
     document.querySelector('#description').value = '';
@@ -64,7 +64,7 @@
     var closeButton = document.querySelector('.error__button');
     closeButton.addEventListener('click', closeErrorClick);
     document.addEventListener('keydown', closeErrorKeydown);
-    function closeErrorKeydown(evt){
+    function closeErrorKeydown(evt) {
       if (evt.key === 'Escape') {
         var errorNode = document.querySelector('.map');
         errorNode.removeChild(fragment);

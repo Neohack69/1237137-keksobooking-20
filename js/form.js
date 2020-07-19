@@ -85,5 +85,5 @@
   window.vars.fieldType.addEventListener('change', checkfieldPrice);
   window.vars.fieldNumberRooms.addEventListener('change', checkNumberRooms);
   window.vars.fieldNumberCapacity.addEventListener(
-    'change', checkNumberRooms);
+      'change', checkNumberRooms);
 })();
