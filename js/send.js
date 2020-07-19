@@ -27,20 +27,32 @@
       .insertBefore(fragment, document.querySelector('.map__pins'));
     var closeButton = document.querySelector('.success');
     closeButton.addEventListener('click', closeModalClick);
-
+    document.addEventListener('keydown', closeSuccessKeydown);
+    function closeSuccessKeydown(evt){
+      if (evt.key === 'Escape') {
+        var errorNode = document.querySelector('.map');
+        errorNode.removeChild(fragment);
+        document.removeEventListener('keydown', closeSuccessKeydown);
+        resetPage();
+      }
+    }
     function closeModalClick() {
       var successNode = document.querySelector('.map');
       successNode.removeChild(fragment);
-      window.map.disableForms(true);
-      window.isRendered = false;
-      window.makePin.addEventListener('click', renderPins);
-      window.vars.fieldPrice.value = '';
-      document.querySelector('#title').value = '';
-      document.querySelector('#description').value = '';
-      window.vars.fieldNumberRooms.value = 1;
-      window.vars.fieldNumberCapacity.value = 3;
-      window.vars.fieldType.value = 'flat';
+      resetPage();
     }
+  }
+
+  function resetPage() {
+    window.map.disableForms(true);
+    window.isRendered = false;
+    window.makePin.addEventListener('click', renderPins);
+    window.vars.fieldPrice.value = '';
+    document.querySelector('#title').value = '';
+    document.querySelector('#description').value = '';
+    window.vars.fieldNumberRooms.value = 1;
+    window.vars.fieldNumberCapacity.value = 3;
+    window.vars.fieldType.value = 'flat';
   }
 
   function onError() {
