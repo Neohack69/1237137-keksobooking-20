@@ -53,4 +53,5 @@
     }
   });
   window.makePin = activatePin;
+  window.renderPins = renderPins;
 })();
