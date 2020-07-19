@@ -1,5 +1,4 @@
 'use strict';
-// для коммита
 (function () {
   window.makePin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
