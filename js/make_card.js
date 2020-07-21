@@ -5,7 +5,7 @@
     var templateCard = document.querySelector('#card').content
       .querySelector('article');
     var elementCard = templateCard.cloneNode(true);
-    var card = window.cardsData[cardNumber];
+    var card = window.cardsDataSliced[cardNumber];
     elementCard.querySelector('.popup__title').textContent = card.offer.title;
     elementCard.querySelector(
         '.popup__text--address').textContent = card.offer.address;
