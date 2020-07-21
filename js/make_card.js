@@ -71,13 +71,14 @@
   var fragment = document.createDocumentFragment();
 
   var mapPin = document.querySelector('.map__pins');
-  function createPins() {
-    for (var i = 0; i < window.cardsData.length; i++) {
+
+  function createPins(arr) {
+    for (var i = 0; i < arr.length; i++) {
       var element = template.cloneNode(true);
-      element.style.left = window.cardsData[i].location.x + 20 + 'px';
-      element.style.top = window.cardsData[i].location.y + 40 + 'px';
-      element.querySelector('img').src = window.cardsData[i].author.avatar;
-      element.querySelector('img').alt = window.cardsData[i].offer.title;
+      element.style.left = arr[i].location.x + 20 + 'px';
+      element.style.top = arr[i].location.y + 40 + 'px';
+      element.querySelector('img').src = arr[i].author.avatar;
+      element.querySelector('img').alt = arr[i].offer.title;
       fragment.appendChild(element);
     }
     mapPin.appendChild(fragment);

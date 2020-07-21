@@ -23,7 +23,7 @@
           onError);
     }
     if (window.cardsData.length && !window.isRendered) {
-      window.makeCard.createPins();
+      window.makeCard.createPins(window.cardsData);
       addHandlersForPins();
       window.isRendered = true;
     }

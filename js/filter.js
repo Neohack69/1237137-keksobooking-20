@@ -45,11 +45,9 @@
 
     for (var i = 0; i < pin.length; i++) {
       window.map.pins.removeChild(pin[i]);
-      console.log('Пины удалились');
     }
 
     var filterType = window.data.data.filter(function (arr) {
-      console.log('arr' + arr[0]);
 
       var type = housingType.value;
       if (type === 'any') {
@@ -108,7 +106,7 @@
     }).slice(0, 5);
 
     window.data.dataFilter = filterType;
-    window.makeCard.createPins();
+    window.makeCard.createPins(window.data.dataFilter);
     window.addHandlersForPins();
   };
 
