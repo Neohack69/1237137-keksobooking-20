@@ -78,7 +78,7 @@
       return arr.offer.guests === parseInt(guests, 10);
     }).filter(function (arr) {
       var checkedFeatures = document.querySelectorAll(
-        'input[type=checkbox]:checked');
+          'input[type=checkbox]:checked');
       var features = [];
 
       if (checkedFeatures.length === 0) {
