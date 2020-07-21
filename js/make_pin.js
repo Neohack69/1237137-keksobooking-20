@@ -9,7 +9,7 @@
   window.cardsData = [];
 
   var onSuccess = function (data) {
-    window.cardsData = data;
+    window.cardsData = data.slice(0, 5);
     renderPins();
   };
 
@@ -54,4 +54,5 @@
   });
   window.makePin = activatePin;
   window.renderPins = renderPins;
+  window.addHandlersForPins = addHandlersForPins;
 })();

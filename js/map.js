@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var map = document.querySelector('.map');
+  var pins = map.querySelector('.map__pins');
   var disableForms = function (state) {
     var formFieldset1 = document.querySelector('.ad-form-header');
     formFieldset1.disabled = state;
@@ -78,5 +80,6 @@
     activateForms: activateForms,
     setAddress: setAddress,
     disableForms: disableForms,
+    pins: pins,
   };
 })();
