@@ -9,7 +9,8 @@
   window.cardsData = [];
 
   var onSuccess = function (data) {
-    window.cardsData = data.slice(0, 5);
+    window.cardsData = data;
+    window.cardsDataSliced = data.slice(0, 5);
     renderPins();
   };
 

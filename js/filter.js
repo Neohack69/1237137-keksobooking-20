@@ -2,20 +2,6 @@
 
 (function () {
 
-  var onError = function (status) {
-    window.load(status);
-  };
-
-  var onSuccess = function (dataServer) {
-    window.data = {
-      data: dataServer,
-      dataFilter: dataServer.slice(0, 6),
-    };
-    console.log(window.data.data);
-    console.log(window.data.dataFilter);
-  };
-  window.load(
-    'https://javascript.pages.academy/keksobooking/data', onSuccess, onError);
   var formFilters = document.querySelector('.map__filters');
   var housingType = formFilters.querySelector('#housing-type');
   var housingPrice = formFilters.querySelector('#housing-price');
@@ -47,7 +33,7 @@
       window.map.pins.removeChild(pin[i]);
     }
 
-    var filterType = window.data.data.filter(function (arr) {
+    var filterType = window.cardsData.filter(function (arr) {
 
       var type = housingType.value;
       if (type === 'any') {
@@ -105,8 +91,8 @@
       return compareTwoArray(features, arr.offer.features);
     }).slice(0, 5);
 
-    window.data.dataFilter = filterType;
-    window.makeCard.createPins(window.data.dataFilter);
+    window.cardsDataSliced = filterType;
+    window.makeCard.createPins(window.cardsDataSliced);
     window.addHandlersForPins();
   };
 
