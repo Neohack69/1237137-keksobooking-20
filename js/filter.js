@@ -9,15 +9,14 @@
   var housingGuests = formFilters.querySelector('#housing-guests');
   var housingFeatures = formFilters.querySelector('.map__features');
   var compareTwoArray = function (first, second) {
-    var result = true;
     var currentValue;
     for (var i = 0; i < first.length; i++) {
       currentValue = second.indexOf(first[i]);
       if (currentValue === -1) {
-        result = false;
+        return false;
       }
     }
-    return result;
+    return true;
   };
   var filterByType = function (data) {
     if (housingType.value === 'any') {
@@ -91,9 +90,9 @@
       window.map.pins.removeChild(pin[number]);
     });
     function composeAndFilter(filters) {
-      return function (x) {
+      return function (item) {
         for (var i = 0; i < filters.length; i++) {
-          if (!filters[i](x)) {
+          if (!filters[i](item)) {
             return false;
           }
         }
@@ -118,5 +117,4 @@
   housingRooms.addEventListener('change', onChangeFilters);
   housingGuests.addEventListener('change', onChangeFilters);
   housingFeatures.addEventListener('change', onChangeFilters);
-
 })();

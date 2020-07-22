@@ -57,6 +57,11 @@
     window.vars.fieldNumberRooms.value = 1;
     window.vars.fieldNumberCapacity.value = 3;
     window.vars.fieldType.value = 'flat';
+    window.isRoomsOk = false;
+    document.querySelector('#housing-type').value = 'any';
+    document.querySelector('#housing-price').value = 'any';
+    document.querySelector('#housing-rooms').value = 'any';
+    document.querySelector('#housing-guests').value = 'any';
   }
 
   function onError() {
