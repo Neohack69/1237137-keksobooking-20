@@ -33,27 +33,25 @@
         '.popup__text--time').textContent = 'Заезд после ' +
       card.offer.checkin + ', выезд до ' + card.offer.checkout;
 
-    var arr = [];
+    var featuresArray = [];
 
     for (var i = 0; i < 6; i++) {
       if (card.offer.features.indexOf(window.vars.featuresType[i]) === -1) {
-        arr.push(window.vars.featuresType[i]);
+        featuresArray.push(window.vars.featuresType[i]);
       }
     }
 
-    for (i = 0; i < arr.length; i++) {
-      elementCard.querySelector('.popup__feature--' + arr[i]).remove();
+    for (i = 0; i < featuresArray.length; i++) {
+      elementCard.querySelector('.popup__feature--' + featuresArray[i]).remove();
     }
-
-    for (i = 0; i < card.offer.photos.length; i++) {
+    card.offer.photos.forEach(function (photo) {
       var img = document.createElement('img', 'popup__photo');
-      img.src = card.offer.photos[i];
+      img.src = photo;
       img.width = 45;
       img.height = 40;
       img.alt = 'Фотография жилья';
       elementCard.querySelector('.popup__photos').appendChild(img);
-    }
-
+    });
     elementCard.querySelector(
         '.popup__description').textContent = card.offer.description;
     elementCard.querySelector('.popup__avatar').src = card.author.avatar;
@@ -72,15 +70,23 @@
 
   var mapPin = document.querySelector('.map__pins');
 
-  function createPins(arr) {
-    for (var i = 0; i < arr.length; i++) {
+  function createPins(dataArray) {
+    dataArray.forEach(function (dataItem) {
       var element = template.cloneNode(true);
-      element.style.left = arr[i].location.x + 20 + 'px';
-      element.style.top = arr[i].location.y + 40 + 'px';
-      element.querySelector('img').src = arr[i].author.avatar;
-      element.querySelector('img').alt = arr[i].offer.title;
+      element.style.left = dataItem.location.x + 20 + 'px';
+      element.style.top = dataItem.location.y + 40 + 'px';
+      element.querySelector('img').src = dataItem.author.avatar;
+      element.querySelector('img').alt = dataItem.offer.title;
       fragment.appendChild(element);
-    }
+    });
+    // for (var i = 0; i < dataArray.length; i++) {
+    //   var element = template.cloneNode(true);
+    //   element.style.left = dataArray[i].location.x + 20 + 'px';
+    //   element.style.top = dataArray[i].location.y + 40 + 'px';
+    //   element.querySelector('img').src = dataArray[i].author.avatar;
+    //   element.querySelector('img').alt = dataArray[i].offer.title;
+    //   fragment.appendChild(element);
+    // }
     mapPin.appendChild(fragment);
   }
 

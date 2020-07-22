@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  window.isRoomsOk = false;
   var checkfieldPrice = function (evt) {
     var value;
     if (!evt) {
@@ -29,38 +30,38 @@
     }
   };
 
-  var checkNumberRooms = function () {
-    if (window.vars.fieldNumberRooms.value === '1' &&
-      window.vars.fieldNumberCapacity.value !== '1') {
-      window.vars.fieldNumberCapacity.setCustomValidity(
-          'В одной комнате может разместиться только один гость');
-      window.vars.fieldNumberCapacity.reportValidity();
-    } else if (window.vars.fieldNumberRooms.value === '2' &&
-      (window.vars.fieldNumberCapacity.value !== '1' &&
-        window.vars.fieldNumberCapacity.value !==
+  function checkCapacity(rooms, capacity) {
+    if (rooms.value === '1' && capacity.value !== '1') {
+      return '1';
+    }
+    if (rooms.value === '2' &&
+      (capacity.value !== '1' && capacity.value !==
         '2')) {
-      window.vars.fieldNumberCapacity.setCustomValidity(
-          'В двух комнатах могут разместиться от одного до двух человек');
-      window.vars.fieldNumberCapacity.reportValidity();
-    } else if (window.vars.fieldNumberRooms.value === '3' &&
-      (window.vars.fieldNumberCapacity.value !== '1' &&
-        window.vars.fieldNumberCapacity.value !== '2' &&
-        window.vars.fieldNumberCapacity.value !== '3')) {
-      window.vars.fieldNumberCapacity.setCustomValidity(
-          'В трех комнатах могут разместиться от одного до трех человек');
-      window.vars.fieldNumberCapacity.reportValidity();
-    } else if (window.vars.fieldNumberRooms.value === '100' &&
-      window.vars.fieldNumberCapacity.value !==
+      return '2';
+    }
+    if (rooms.value === '3' &&
+      (capacity.value !== '1' && capacity.value !== '2' && capacity.value !==
+        '3')) {
+      return '3';
+    }
+    if (rooms.value === '100' && capacity.value !==
       '0') {
-      window.vars.fieldNumberCapacity.setCustomValidity(
-          '100 комнат не для гостей');
-      window.vars.fieldNumberCapacity.reportValidity();
+      return '100';
+    }
+    return '0';
+  }
+
+  var checkNumberRooms = function () {
+    var capacity = window.vars.fieldNumberCapacity;
+    var error = checkCapacity(window.vars.fieldNumberRooms, window.vars.fieldNumberCapacity);
+    if (error !== '0') {
+      capacity.setCustomValidity(window.vars.customValidity[error]);
+      capacity.reportValidity();
     } else {
-      window.vars.fieldNumberCapacity.setCustomValidity('');
-      window.vars.fieldNumberCapacity.reportValidity();
+      capacity.setCustomValidity('');
+      window.isRoomsOk = true;
     }
   };
-
   var fieldTimeIn = document.querySelector('#timein');
   var fieldTimeOut = document.querySelector('#timeout');
 
@@ -86,4 +87,5 @@
   window.vars.fieldNumberRooms.addEventListener('change', checkNumberRooms);
   window.vars.fieldNumberCapacity.addEventListener(
       'change', checkNumberRooms);
+  window.checkNumberRooms = checkNumberRooms;
 })();

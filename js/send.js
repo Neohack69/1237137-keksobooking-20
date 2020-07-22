@@ -5,18 +5,22 @@
   var submitButton = document.querySelector('.ad-form');
   submitButton.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    var form = document.querySelector('.ad-form');
-    var formData = new FormData(form);
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', function () {
-      if (xhr.status === 200) {
-        onSuccess();
-      } else {
-        onError();
-      }
-    });
-    xhr.open('POST', 'https://javascript.pages.academy/keksobooking');
-    xhr.send(formData);
+    if (window.isRoomsOk) {
+      var form = document.querySelector('.ad-form');
+      var formData = new FormData(form);
+      var xhr = new XMLHttpRequest();
+      xhr.addEventListener('load', function () {
+        if (xhr.status === 200) {
+          onSuccess();
+        } else {
+          onError();
+        }
+      });
+      xhr.open('POST', 'https://javascript.pages.academy/keksobooking');
+      xhr.send(formData);
+    } else {
+      window.checkNumberRooms();
+    }
   });
 
   function onSuccess() {

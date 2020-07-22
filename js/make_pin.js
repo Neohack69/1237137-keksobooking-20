@@ -39,13 +39,12 @@
 
   var addHandlersForPins = function () {
     var buttonPin = document.querySelectorAll('.map__pin:not(.map__pin--main)');
-
-    for (var g = 0; g < buttonPin.length; g++) {
-      buttonPin[g].id = g;
-      buttonPin[g].addEventListener('click', function (evt) {
+    buttonPin.forEach(function (pin, i) {
+      pin.id = i;
+      pin.addEventListener('click', function (evt) {
         window.map.pinPickHandler(evt);
       });
-    }
+    });
   };
 
   activatePin.addEventListener('keydown', function (evt) {

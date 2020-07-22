@@ -4,14 +4,16 @@
   var map = document.querySelector('.map');
   var pins = map.querySelector('.map__pins');
   var disableForms = function (state) {
-    var formFieldset1 = document.querySelector('.ad-form-header');
-    formFieldset1.disabled = state;
-    var formFieldset2 = document.querySelectorAll('.ad-form__element');
-    for (var i = 0; i < formFieldset2.length; i++) {
-      formFieldset2[i].disabled = state;
-    }
-    var formFieldset3 = document.querySelector('.map__filters');
-    formFieldset3.disabled = state;
+    var formHeader = document.querySelector('.ad-form-header');
+    formHeader.disabled = state;
+    var mapFilters = document.querySelectorAll('.map__filter');
+    mapFilters.forEach(function (input) {
+      input.disabled = state;
+    });
+    var formInputs = document.querySelectorAll('.ad-form__element');
+    formInputs.forEach(function (input) {
+      input.disabled = state;
+    });
     var mapFaded = document.querySelector('.map--faded');
     var formEnabled = document.querySelector('.ad-form--disabled');
     if (!state) {
@@ -26,9 +28,9 @@
       document.querySelector('.ad-form').classList.add('ad-form--disabled');
       var buttonPin = document.querySelectorAll(
           '.map__pin:not(.map__pin--main)');
-      for (var g = 0; g < buttonPin.length; g++) {
-        buttonPin[g].remove();
-      }
+      buttonPin.forEach(function (pin) {
+        pin.remove();
+      });
     }
   };
 
